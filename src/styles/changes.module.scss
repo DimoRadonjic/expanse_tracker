@@ -1,0 +1,36 @@
+.changesContent {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 2rem;
+}
+
+.changesContent h2 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.income {
+  background-color: green;
+}
+
+.expense {
+  background-color: red;
+  color: black;
+}
+
+.income,
+.expense {
+  display: flex;
+  place-content: space-between;
+  place-items: center;
+  column-gap: 2rem;
+  max-width: 600px;
+  padding: 0.5rem 1rem;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}

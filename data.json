@@ -1,0 +1,95 @@
+{
+  "transactions": [
+    {
+      "id": "a1B2",
+      "date": "01/07/2023",
+      "category": "Salary",
+      "amount": 250,
+      "type": "income"
+    },
+    {
+      "id": "g7H8",
+      "date": "02/07/2023",
+      "category": "Rent",
+      "amount": 120,
+      "type": "expense"
+    },
+    {
+      "id": "c3D4",
+      "date": "05/07/2023",
+      "category": "Investments",
+      "amount": 70,
+      "type": "income"
+    },
+    {
+      "id": "i9J0",
+      "date": "05/07/2023",
+      "category": "Groceries",
+      "amount": 45,
+      "type": "expense"
+    },
+    {
+      "id": "e5F6",
+      "date": "10/07/2023",
+      "category": "Freelance",
+      "amount": 200,
+      "type": "income"
+    },
+    {
+      "id": "k1L2",
+      "date": "10/07/2023",
+      "category": "Transportation",
+      "amount": 30,
+      "type": "expense"
+    },
+    {
+      "id": "m3N4",
+      "date": "01/08/2023",
+      "category": "Salary",
+      "amount": 260,
+      "type": "income"
+    },
+    {
+      "id": "s9T0",
+      "date": "02/08/2023",
+      "category": "Rent",
+      "amount": 130,
+      "type": "expense"
+    },
+    {
+      "id": "o5P6",
+      "date": "05/08/2023",
+      "category": "Investments",
+      "amount": 80,
+      "type": "income"
+    },
+    {
+      "id": "u1V2",
+      "date": "06/08/2023",
+      "category": "Groceries",
+      "amount": 50,
+      "type": "expense"
+    },
+    {
+      "id": "w3X4",
+      "date": "12/08/2023",
+      "category": "Transportation",
+      "amount": 35,
+      "type": "expense"
+    },
+    {
+      "id": "q7R8",
+      "date": "15/08/2023",
+      "category": "Freelance",
+      "amount": 220,
+      "type": "income"
+    },
+    {
+      "id": "q7R7",
+      "amount": 100,
+      "category": "Cashback",
+      "date": "2023-08-24",
+      "type": "income"
+    }
+  ]
+}
