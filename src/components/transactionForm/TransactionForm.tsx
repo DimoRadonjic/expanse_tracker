@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { styleTransactionForm } from "../../styles";
-import { DataType, useBalanceContext } from "../../contexts/balanceContext";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import { useBalanceContext } from "../../contexts/balanceContext";
+import { DataType } from "../../types";
 
 const TransactionForm = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const TransactionForm = () => {
   const [transaction, setTransaction] = useState<DataType>({
     amount: 0,
     category: "",
-    date: "",
+    date: new Date().toDateString(),
     type: "income",
     id: "",
   });

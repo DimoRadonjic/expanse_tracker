@@ -1,35 +1,11 @@
-import React, {
+import {
   createContext,
   useReducer,
   ReactNode,
   useContext,
   useEffect,
 } from "react";
-
-export type DataType = {
-  amount: number;
-  category: string;
-  date: string;
-  type: "income" | "expense";
-  id: string;
-};
-
-type BalanceContextType = {
-  data: DataType[];
-  balance: number;
-  incomes: DataType[];
-  expenses: DataType[];
-  categories: string[];
-  isLoading: boolean;
-  error?: string;
-  dispatch: React.Dispatch<Action>;
-};
-
-type Action =
-  | { type: "request" }
-  | { type: "success"; results: DataType[] }
-  | { type: "failure"; error: string }
-  | { type: "add_transaction"; payload: DataType };
+import { BalanceContextAction, BalanceContextType } from "../types";
 
 const initialState: BalanceContextType = {
   data: [],
@@ -43,7 +19,7 @@ const initialState: BalanceContextType = {
 
 function reducer(
   state: BalanceContextType,
-  action: Action
+  action: BalanceContextAction
 ): BalanceContextType {
   switch (action.type) {
     case "request":

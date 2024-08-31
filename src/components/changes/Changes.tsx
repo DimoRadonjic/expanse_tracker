@@ -1,5 +1,5 @@
-import { DataType } from "../../contexts/balanceContext";
 import { styleChanges } from "../../styles";
+import { DataType } from "../../types";
 
 interface ChangesProps {
   type: string;

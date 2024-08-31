@@ -1,0 +1,62 @@
+.registerLogin {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-content: start;
+  place-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.title {
+  margin-bottom: 3rem;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  font-size: 24px;
+
+  label {
+    font-size: 24px;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    input {
+      height: 24px;
+      font-size: 18px;
+    }
+  }
+
+  .buttons {
+    margin-top: -30px;
+    display: grid;
+    width: 100%;
+    place-content: center;
+    place-items: center;
+    column-gap: 5%;
+    grid-template-columns: 1fr 2fr;
+    grid-row: 1fr 1fr;
+    p {
+      grid-column: 2/2;
+      grid-row: 1;
+      font-size: 14px;
+    }
+    button {
+      font-size: 18px;
+      padding: 8px 24px;
+      width: fit-content;
+      grid-row: 2;
+    }
+  }
+
+  .registerButtons {
+    @extend .buttons;
+    grid-row: 1fr;
+    margin-top: 0;
+  }
+}
