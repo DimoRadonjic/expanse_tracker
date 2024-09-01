@@ -1,11 +1,12 @@
-import { UserType, Status } from ".";
+import { UserType, Status, LoginUserType } from ".";
 
 type AuthContextAction =
-  | { type: "setUser"; user: UserType }
-  | { type: "failure"; error: string };
+  | { type: "setUser"; user: UserType | LoginUserType }
+  | { type: "failure"; error: string }
+  | { type: "logout" };
 
 type AuthContextType = {
-  user: UserType | null;
+  user: UserType | LoginUserType | null;
   status: Status;
   isLoading: boolean;
   error?: string;

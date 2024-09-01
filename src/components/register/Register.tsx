@@ -9,11 +9,12 @@ import {
 } from "../../types";
 import { toast, ToastContainer, Zoom } from "react-toastify";
 import { useAuthContext } from "../../contexts/authContext";
+import { getDataFromForm } from "../util";
 
 const Register = () => {
   const navigate = useNavigate();
 
-  const { dispatch: dispatchContext, status, user } = useAuthContext();
+  const { dispatch: dispatchContext } = useAuthContext();
 
   const initialState: RegisterFormType = {
     username: "",
@@ -50,16 +51,6 @@ const Register = () => {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const getDataFromForm = (target: EventTarget & HTMLFormElement) => {
-    const formData = new FormData(target);
-    const data: { [key: string]: FormDataEntryValue } = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
-
-    return data;
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

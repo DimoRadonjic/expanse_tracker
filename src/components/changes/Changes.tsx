@@ -7,7 +7,7 @@ interface ChangesProps {
 }
 const Changes = ({ type, data }: ChangesProps) => {
   const filteredData =
-    type.toLowerCase() !== "general"
+    type.toLowerCase() !== "balance"
       ? data.filter((item) => item.type.toLowerCase() === type.toLowerCase())
       : data;
 
@@ -19,8 +19,6 @@ const Changes = ({ type, data }: ChangesProps) => {
   const sortedData = dateChanged.sort(
     (item1, item2) => item2.date.getTime() - item1.date.getTime()
   );
-
-  console.log("sortedData", sortedData);
 
   function calcTotal() {
     switch (type.toLowerCase()) {
@@ -46,7 +44,7 @@ const Changes = ({ type, data }: ChangesProps) => {
     <div className={styleChanges.changesContent}>
       <div>
         <h2>
-          {type} : {calcTotal()}
+          {type} : {calcTotal()} €
         </h2>
       </div>
       <div className={styleChanges.data}>
@@ -55,7 +53,7 @@ const Changes = ({ type, data }: ChangesProps) => {
             <div key={index} className={styleChanges[item.type]}>
               <div>Category : {item.category}</div>
               <div>Date : {item.date.toDateString()}</div>
-              <div>Amount : {item.amount}</div>
+              <div>Amount : {item.amount} €</div>
             </div>
           </>
         ))}

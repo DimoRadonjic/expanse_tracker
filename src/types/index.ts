@@ -15,9 +15,9 @@ type RegisterUserType = UserType & {
   retypePassword: string;
 };
 
-type LoginUserType = UserType & {
-  email?: string;
+type LoginUserType = {
   username?: string;
+  email?: string;
   password: string;
 };
 

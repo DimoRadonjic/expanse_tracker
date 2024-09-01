@@ -85,7 +85,6 @@ export function BalanceProvider({ children }: { children: ReactNode }) {
         return response.json();
       })
       .then(({ transactions }) => {
-        console.log("data", transactions);
         dispatch({ type: "success", results: transactions });
       })
       .catch((error) => {

@@ -14,6 +14,12 @@ function reducer(
 ): AuthContextType {
   switch (action.type) {
     case "setUser": {
+      console.log("user", {
+        ...state,
+        status: "authenticated",
+        user: action.user,
+      });
+
       return {
         ...state,
         status: "authenticated",
@@ -22,6 +28,9 @@ function reducer(
     }
     case "failure":
       return { ...state, status: "no-authenticated", error: action.error };
+
+    case "logout":
+      return { ...state, status: "no-authenticated", user: null };
 
     default:
       return state;

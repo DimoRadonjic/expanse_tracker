@@ -59,4 +59,22 @@
     grid-row: 1fr;
     margin-top: 0;
   }
+
+  .selectInput {
+    border: none;
+    background-color: transparent;
+    width: fit-content;
+    font-size: inherit;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  .option {
+    background-color: #242424;
+
+    &:hover {
+      background-color: red;
+    }
+  }
 }

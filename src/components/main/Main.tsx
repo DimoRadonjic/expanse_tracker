@@ -23,7 +23,7 @@ const Main = () => {
   return (
     <div className={styleMain.sections}>
       <section className={styleMain.section}>
-        <Changes type="General" data={data} />
+        <Changes type="Balance" data={data} />
       </section>
       <section className={styleMain.section}>
         <Changes type="Income" data={data} />

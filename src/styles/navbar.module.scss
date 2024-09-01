@@ -1,5 +1,6 @@
 .navbar {
   display: flex;
+  font-size: 18px;
 }
 
 .navbar ul {
@@ -11,4 +12,13 @@
   list-style: none;
   font-size: 1.5rem;
   padding: 0;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+}
+
+.balanceText {
+  font-size: 30px;
 }
