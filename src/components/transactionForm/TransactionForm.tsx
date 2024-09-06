@@ -86,6 +86,8 @@ const TransactionForm = () => {
           <DatePicker
             selected={new Date(transaction.date)}
             onChange={(e) => collectDate(e)}
+            dateFormat="dd-MM-yyyy"
+            className={styleTransactionForm.calendar}
           />
         </div>
         <div
