@@ -14,12 +14,6 @@ function reducer(
 ): AuthContextType {
   switch (action.type) {
     case "setUser": {
-      console.log("user", {
-        ...state,
-        status: "authenticated",
-        user: action.user,
-      });
-
       return {
         ...state,
         status: "authenticated",

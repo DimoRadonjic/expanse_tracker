@@ -1,0 +1,25 @@
+@import "./variables.scss";
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: $main-text-light;
+    background-color: $main-background-light;
+  }
+
+  button {
+    background-color: $main-button-color-light;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: $main-text-dark;
+    background-color: $main-background-dark;
+  }
+  option {
+    background-color: #242424;
+  }
+
+  button {
+    background-color: $main-button-color-dark;
+  }
+}

@@ -7,7 +7,7 @@ import { LoginUserType } from "../../types";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { dispatch, user } = useAuthContext();
+  const { dispatch } = useAuthContext();
   const [inputType, setInputType] = useState("email");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +21,6 @@ const Login = () => {
       };
 
       dispatch({ type: "setUser", user: userData });
-      console.log("user", user);
     } else {
       const username = data["email-username"].toString();
       const userData: LoginUserType = {
@@ -40,7 +39,7 @@ const Login = () => {
 
   return (
     <div className={style.registerLogin}>
-      <h1 className={style.title}>Login</h1>
+      <h2 className={style.title}>Login</h2>
       <form className={style.form} onSubmit={handleSubmit}>
         <div className={style.formContent}>
           <div className={style.input}>
@@ -79,9 +78,9 @@ const Login = () => {
               placeholder="password"
             />
           </div>
-          <div className={style.formButtonsPart}>
-            <div className={style.buttons}>
-              <button>Login</button>
+          <div className={style.buttons}>
+            <button className={style.loginButton}>Login</button>
+            <div className={style.registerButton}>
               <button
                 onClick={(e) => {
                   e.preventDefault();

@@ -1,8 +1,68 @@
+@import "./variables.scss";
+
 .app {
   display: flex;
   flex-direction: column;
-  height: fit-content;
   padding: 0 8rem;
-  padding-bottom: 3rem;
-  overflow: hidden;
+  min-height: 100vh;
+}
+
+.appLight {
+  @extend .app;
+  color: $main-text-light;
+  background-color: $main-background-light;
+
+  button {
+    background-color: $main-button-color-light;
+  }
+
+  option {
+    background-color: inherit;
+    color: black;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  input {
+    background-color: inherit !important;
+    border: 1px solid $input-border-color;
+    border-radius: 1em;
+    padding: 0.4em 0.8em;
+
+    &::placeholder {
+      color: inherit;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 50px $main-background-light inset;
+      -webkit-text-fill-color: $main-text-light;
+    }
+  }
+}
+
+.appDark {
+  @extend .app;
+  color: $main-text-dark;
+  background-color: $main-background-dark;
+  button {
+    background-color: $main-button-color-dark;
+  }
+
+  input {
+    background-color: inherit !important;
+    border: 1px solid;
+    border-radius: 1em;
+    padding: 0.4em 0.8em;
+
+    &::placeholder {
+      color: inherit;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 50px $main-background-dark inset !important; /* Change the color to your own background color */
+      -webkit-text-fill-color: $main-text-dark;
+    }
+  }
 }

@@ -1,0 +1,22 @@
+$main-background-light: #e6e6fa;
+$main-background-dark: #242424;
+$main-text-light: #0086b3;
+$main-text-dark: #e6e6fa;
+$main-button-color-light: #0086b3;
+$main-button-color-dark: #025570;
+$white-color-text: $main-background-light;
+$input-border-color: #7bb7cb;
+$transactionForm-background-light: #f3f3f3;
+$transactionForm-background-dark: #343434;
+
+html[data-theme="light"] {
+  $main-background-light: #e6e6fa;
+  $main-text-light: #0086b3;
+  $main-button-color-light: #0086b3;
+}
+
+html[data-theme="dark"] {
+  $main-background-dark: #242424;
+  $main-text-dark: #e6e6fa;
+  $main-button-color-dark: #025e7d;
+}

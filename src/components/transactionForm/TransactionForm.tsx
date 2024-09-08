@@ -4,8 +4,11 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useBalanceContext } from "../../contexts/balanceContext";
 import { DataType } from "../../types";
+import { useThemeContext } from "../../contexts/themeContext";
 
 const TransactionForm = () => {
+  const { themeMode } = useThemeContext();
+
   const navigate = useNavigate();
   const { dispatch } = useBalanceContext();
   const [transaction, setTransaction] = useState<DataType>({
@@ -59,7 +62,14 @@ const TransactionForm = () => {
 
   return (
     <div className={styleTransactionForm.transactionForm}>
-      <form onSubmit={handleSubmit} className={styleTransactionForm.form}>
+      <form
+        onSubmit={handleSubmit}
+        className={
+          themeMode === "dark"
+            ? styleTransactionForm.transactionFormContentDark
+            : styleTransactionForm.transactionFormContentLight
+        }
+      >
         <div
           className={
             styleTransactionForm.typePart + " " + styleTransactionForm.part
