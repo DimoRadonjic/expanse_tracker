@@ -6,9 +6,10 @@ type ThemeStates = {
   themeMode: ThemeModes;
   dispatch: React.Dispatch<ThemeContextAction>;
 };
+const storageTheme = localStorage.getItem("theme");
 
 const initialState: ThemeStates = {
-  themeMode: "light",
+  themeMode: storageTheme ? JSON.parse(storageTheme) : "light",
   dispatch: function (): void {},
 };
 
@@ -17,6 +18,10 @@ type ThemeContextAction = { type: "change" };
 function reducer(state: any, action: ThemeContextAction) {
   switch (action.type) {
     case "change":
+      localStorage.setItem(
+        "theme",
+        JSON.stringify(state.themeMode === "light" ? "dark" : "light")
+      );
       return {
         ...state,
         themeMode: state.themeMode === "light" ? "dark" : "light",
