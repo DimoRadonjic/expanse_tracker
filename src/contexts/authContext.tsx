@@ -1,9 +1,12 @@
 import { createContext, useReducer, ReactNode, useContext } from "react";
 import { AuthContextAction, AuthContextType } from "../types";
 
+const storageStatus = localStorage.getItem("status");
+const storageUser = localStorage.getItem("user");
+
 const initialState: AuthContextType = {
-  status: "no-authenticated",
-  user: null,
+  status: storageStatus ? JSON.parse(storageStatus) : "no-authenticated",
+  user: storageUser ? JSON.parse(storageUser) : "",
   isLoading: false,
   dispatch: function (): void {},
 };
@@ -14,6 +17,9 @@ function reducer(
 ): AuthContextType {
   switch (action.type) {
     case "setUser": {
+      localStorage.setItem("user", JSON.stringify(action.user));
+      localStorage.setItem("status", JSON.stringify("authenticated"));
+
       return {
         ...state,
         status: "authenticated",
