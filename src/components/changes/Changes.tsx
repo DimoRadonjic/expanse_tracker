@@ -1,3 +1,4 @@
+import { useThemeContext } from "../../contexts/themeContext";
 import { styleChanges } from "../../styles";
 import { DataType } from "../../types";
 
@@ -6,6 +7,8 @@ interface ChangesProps {
   data: DataType[];
 }
 const Changes = ({ type, data }: ChangesProps) => {
+  const { themeMode } = useThemeContext();
+
   const filteredData =
     type.toLowerCase() !== "balance"
       ? data.filter((item) => item.type.toLowerCase() === type.toLowerCase())
@@ -50,7 +53,14 @@ const Changes = ({ type, data }: ChangesProps) => {
       <div className={styleChanges.data}>
         {sortedData.map((item, index) => (
           <>
-            <div key={index} className={styleChanges[item.type]}>
+            <div
+              key={index}
+              className={
+                themeMode === "dark"
+                  ? styleChanges[item.type] + " " + styleChanges.HoverDark
+                  : styleChanges[item.type] + " " + styleChanges.HoverLight
+              }
+            >
               <div>Category : {item.category}</div>
               <div>Date : {item.date.toDateString()}</div>
               <div>Amount : {item.amount} €</div>
