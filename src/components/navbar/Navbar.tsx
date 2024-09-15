@@ -12,7 +12,6 @@ function Navbar() {
   const { themeMode, dispatch: themeDispatch } = useThemeContext();
 
   const currentPage = location.pathname;
-  console.log(currentPage);
 
   const handleClickMode = () => {
     themeDispatch({ type: "change" });
@@ -32,22 +31,33 @@ function Navbar() {
         {status === "authenticated" && (
           <>
             <li>
-              {currentPage !== "/add-transaction" ? (
-                <button
-                  className={styleNav.button}
-                  onClick={() => navigate("/add-transaction")}
-                >
-                  Add Transaction
-                </button>
-              ) : (
-                <button
-                  className={styleNav.button}
-                  onClick={() => navigate("/")}
-                >
-                  Back
-                </button>
-              )}
+              <button
+                className={styleNav.button}
+                onClick={() => navigate("/add-transaction")}
+              >
+                Add Transaction
+              </button>
             </li>
+            <li>
+              <button
+                className={styleNav.button}
+                onClick={() => navigate("/charts")}
+              >
+                Charts
+              </button>
+            </li>
+
+            <li>
+              <button
+                className={styleNav.button + " " + styleNav.logoutButton}
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Records
+              </button>
+            </li>
+
             <li>
               <button
                 className={styleNav.button + " " + styleNav.logoutButton}

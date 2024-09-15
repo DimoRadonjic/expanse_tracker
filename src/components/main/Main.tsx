@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { styleMain } from "../../styles";
 import Changes from "../changes/Changes";
+import CombinedChart from "../charts/CombinedChart";
+import AppLineChart from "../charts/LineChart";
+import AppBarChart from "../charts/BarChart";
+import { useLocation } from "react-router-dom";
 
 const Main = () => {
   const [data, setData] = useState<[]>([]);
+  const location = useLocation();
+
+  console.log(location.pathname);
 
   useEffect(() => {
     fetch("/data.json")
@@ -20,17 +27,34 @@ const Main = () => {
         console.error("Error fetching the JSON file:", error);
       });
   }, []);
+
   return (
     <div className={styleMain.sections}>
-      <section className={styleMain.section}>
-        <Changes type="Balance" data={data} />
-      </section>
-      <section className={styleMain.section}>
-        <Changes type="Income" data={data} />
-      </section>
-      <section className={styleMain.section}>
-        <Changes type="Expense" data={data} />
-      </section>
+      {location.pathname === "/charts" ? (
+        <>
+          <section className={styleMain.sectionChart}>
+            <AppBarChart></AppBarChart>
+          </section>
+          <section className={styleMain.sectionChart}>
+            <AppLineChart></AppLineChart>
+          </section>
+          <section className={styleMain.sectionChart}>
+            <CombinedChart></CombinedChart>
+          </section>
+        </>
+      ) : (
+        <>
+          <section className={styleMain.section}>
+            <Changes type="Balance" data={data} />
+          </section>
+          <section className={styleMain.section}>
+            <Changes type="Income" data={data} />
+          </section>
+          <section className={styleMain.section}>
+            <Changes type="Expense" data={data} />
+          </section>
+        </>
+      )}
     </div>
   );
 };

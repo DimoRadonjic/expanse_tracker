@@ -55,6 +55,7 @@ const Changes = ({ type, data }: ChangesProps) => {
           <>
             <div
               key={index}
+              id={styleChanges.item}
               className={
                 themeMode === "dark"
                   ? styleChanges[item.type] + " " + styleChanges.HoverDark

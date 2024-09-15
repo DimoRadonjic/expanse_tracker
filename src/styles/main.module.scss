@@ -12,3 +12,14 @@
   row-gap: 1.5rem;
   margin-top: 1.5rem;
 }
+
+.sectionsChart {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 900px;
+  place-items: center;
+  place-content: space-between;
+  min-width: 100%;
+  row-gap: 1.5rem;
+  margin-top: 1.5rem;
+}
