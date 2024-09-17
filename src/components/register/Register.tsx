@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import style from "../../styles/loginRegister.module.scss";
-import React, { useEffect, useReducer } from "react";
+import { styleApp, styleLoginRegister } from "../../styles";
+import React, { useReducer } from "react";
 import {
   RegisterFormType,
   RegisterFormAction,
-  UserType,
   RegisterUserType,
 } from "../../types";
 import { toast, ToastContainer, Zoom } from "react-toastify";
@@ -87,11 +86,11 @@ const Register = () => {
   };
 
   return (
-    <div className={style.registerLogin}>
-      <h2 className={style.title}>Register</h2>
-      <form className={style.form} onSubmit={handleSubmit}>
-        <div className={style.formContent}>
-          <div className={style.input}>
+    <div className={styleLoginRegister.registerLogin}>
+      <h2 className={styleLoginRegister.title}>Register</h2>
+      <form className={styleLoginRegister.form} onSubmit={handleSubmit}>
+        <div className={styleLoginRegister.formContent}>
+          <div className={styleLoginRegister.input}>
             <label htmlFor="username">Email</label>
             <input
               required
@@ -101,7 +100,7 @@ const Register = () => {
               placeholder="email"
             />
           </div>
-          <div className={style.input}>
+          <div className={styleLoginRegister.input}>
             <label htmlFor="username">Username</label>
             <input
               required
@@ -111,7 +110,7 @@ const Register = () => {
               placeholder="username"
             />
           </div>
-          <div className={style.input}>
+          <div className={styleLoginRegister.input}>
             <label htmlFor="password">Password</label>
             <input
               required
@@ -121,7 +120,7 @@ const Register = () => {
               placeholder="password"
             />
           </div>
-          <div className={style.input}>
+          <div className={styleLoginRegister.input}>
             <label htmlFor="re-type-password">Re-type Password</label>
             <input
               required
@@ -131,10 +130,17 @@ const Register = () => {
               placeholder="re-type password"
             />
           </div>
-          <div className={style.formButtonsPart}>
-            <div className={style.buttons + " " + style.registerButtons}>
-              <button>Register</button>
+          <div className={styleLoginRegister.formButtonsPart}>
+            <div
+              className={
+                styleLoginRegister.buttons +
+                " " +
+                styleLoginRegister.registerButtons
+              }
+            >
+              <button className={styleApp.appButton}>Register</button>
               <button
+                className={styleApp.appButton}
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("login");

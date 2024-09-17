@@ -12,7 +12,7 @@
   color: $main-text-light;
   background-color: $main-background-light;
 
-  button {
+  .appButton {
     background-color: $main-button-color-light;
   }
 
@@ -46,7 +46,7 @@
   @extend .app;
   color: $main-text-dark;
   background-color: $main-background-dark;
-  button {
+  .appButton {
     background-color: $main-button-color-dark;
   }
 
@@ -65,4 +65,11 @@
       -webkit-text-fill-color: $main-text-dark;
     }
   }
+}
+
+.appButton {
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  letter-spacing: 0.15ch;
 }

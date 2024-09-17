@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import style from "../../styles/loginRegister.module.scss";
+import { styleLoginRegister, styleApp } from "../../styles";
 import React, { useState } from "react";
 import { getDataFromForm } from "../util";
 import { useAuthContext } from "../../contexts/authContext";
@@ -38,21 +38,21 @@ const Login = () => {
   };
 
   return (
-    <div className={style.registerLogin}>
-      <h2 className={style.title}>Login</h2>
-      <form className={style.form} onSubmit={handleSubmit}>
-        <div className={style.formContent}>
-          <div className={style.input}>
+    <div className={styleLoginRegister.registerLogin}>
+      <h2 className={styleLoginRegister.title}>Login</h2>
+      <form className={styleLoginRegister.form} onSubmit={handleSubmit}>
+        <div className={styleLoginRegister.formContent}>
+          <div className={styleLoginRegister.input}>
             <select
-              className={style.selectInput}
+              className={styleLoginRegister.selectInput}
               name="input-type"
               id="input-type"
               onChange={(e) => handleChange(e)}
             >
-              <option className={style.option} value="email">
+              <option className={styleLoginRegister.option} value="email">
                 Email
               </option>
-              <option className={style.option} value="text">
+              <option className={styleLoginRegister.option} value="text">
                 Username
               </option>
             </select>
@@ -68,7 +68,7 @@ const Login = () => {
               }
             />
           </div>
-          <div className={style.input}>
+          <div className={styleLoginRegister.input}>
             <label htmlFor="password">Password</label>
             <input
               required
@@ -78,9 +78,19 @@ const Login = () => {
               placeholder="password"
             />
           </div>
-          <div className={style.buttons}>
-            <button className={style.loginButton}>Login</button>
-            <div className={style.registerButton}>
+          <div className={styleLoginRegister.buttons}>
+            <button
+              className={
+                styleApp.appButton + " " + styleLoginRegister.loginButton
+              }
+            >
+              Login
+            </button>
+            <div
+              className={
+                styleApp.appButton + " " + styleLoginRegister.registerButton
+              }
+            >
               <button
                 onClick={(e) => {
                   e.preventDefault();

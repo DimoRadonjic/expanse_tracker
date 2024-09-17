@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 import { useBalanceContext } from "../../contexts/balanceContext";
 import { DataType } from "../../types";
 import { useThemeContext } from "../../contexts/themeContext";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import appStyle from "../../styles/app.module.scss";
 
 const TransactionForm = () => {
   const { themeMode } = useThemeContext();
@@ -58,6 +60,56 @@ const TransactionForm = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    const toastStyles = {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    };
+
+    if (transaction.amount <= 0) {
+      toast.error("Failed transaction: Amount must be greater than zero.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    } else if (transaction.type === "income") {
+      toast.success("Transaction successful: Income added!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    } else {
+      toast.success("Transaction successful: Expense added!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
   };
 
   return (
@@ -130,10 +182,15 @@ const TransactionForm = () => {
         </div>
 
         <div className={styleTransactionForm.buttons}>
-          <button type="submit">Submit</button>
-          <button onClick={() => navigate(-1)}>Back</button>
+          <button className={appStyle.appButton} type="submit">
+            Submit
+          </button>
+          <button className={appStyle.appButton} onClick={() => navigate(-1)}>
+            Back
+          </button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };

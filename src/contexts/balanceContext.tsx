@@ -14,6 +14,7 @@ const initialState: BalanceContextType = {
   incomes: [],
   expenses: [],
   isLoading: false,
+  transactionMessage: "",
   dispatch: function (): void {},
 };
 
@@ -43,6 +44,15 @@ function reducer(
       return { ...state, isLoading: false, error: action.error };
     case "add_transaction": {
       const payloadType = action.payload.type;
+      const isAmountValid = action.payload.amount > 0;
+
+      if (!isAmountValid) {
+        return {
+          ...state,
+          error: "Failed transaction: Amount must be greater than zero.",
+        };
+      }
+
       if (payloadType === "income") {
         const income = action.payload.amount;
         const balance = state.balance + income;
@@ -51,6 +61,7 @@ function reducer(
           data: [...state.data, action.payload],
           incomes: [...state.incomes, action.payload],
           balance,
+          transactionMessage: "Transaction successful: Income added!",
         };
       } else {
         const expense = action.payload.amount;
@@ -60,6 +71,7 @@ function reducer(
           data: [...state.data, action.payload],
           expenses: [...state.expenses, action.payload],
           balance,
+          transactionMessage: "Transaction successful: Expense added!",
         };
       }
     }

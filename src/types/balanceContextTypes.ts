@@ -7,6 +7,7 @@ type BalanceContextType = {
   expenses: DataType[];
   categories: string[];
   isLoading: boolean;
+  transactionMessage: string;
   error?: string;
   dispatch: React.Dispatch<BalanceContextAction>;
 };

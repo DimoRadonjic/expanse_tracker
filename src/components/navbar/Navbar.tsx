@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { styleNav } from "../../styles";
+import { styleNav, styleApp } from "../../styles";
+
 import { useBalanceContext } from "../../contexts/balanceContext";
 import { useAuthContext } from "../../contexts/authContext";
 import { useThemeContext } from "../../contexts/themeContext";
@@ -32,7 +33,7 @@ function Navbar() {
           <>
             <li>
               <button
-                className={styleNav.button}
+                className={styleApp.appButton + " " + styleNav.button}
                 onClick={() => navigate("/add-transaction")}
               >
                 Add Transaction
@@ -40,7 +41,7 @@ function Navbar() {
             </li>
             <li>
               <button
-                className={styleNav.button}
+                className={styleApp.appButton + " " + styleNav.button}
                 onClick={() => navigate("/charts")}
               >
                 Charts
@@ -49,7 +50,13 @@ function Navbar() {
 
             <li>
               <button
-                className={styleNav.button + " " + styleNav.logoutButton}
+                className={
+                  styleApp.appButton +
+                  " " +
+                  styleNav.button +
+                  " " +
+                  styleNav.logoutButton
+                }
                 onClick={() => {
                   navigate("/");
                 }}
@@ -60,7 +67,13 @@ function Navbar() {
 
             <li>
               <button
-                className={styleNav.button + " " + styleNav.logoutButton}
+                className={
+                  styleApp.appButton +
+                  " " +
+                  styleNav.button +
+                  " " +
+                  styleNav.logoutButton
+                }
                 onClick={() => {
                   navigate("/login");
                   dispatch({ type: "logout" });
