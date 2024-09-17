@@ -29,33 +29,37 @@ const Main = () => {
   }, []);
 
   return (
-    <div className={styleMain.sections}>
+    <>
       {location.pathname === "/charts" ? (
         <>
-          <section className={styleMain.sectionChart}>
-            <AppBarChart></AppBarChart>
-          </section>
-          <section className={styleMain.sectionChart}>
-            <AppLineChart></AppLineChart>
-          </section>
-          <section className={styleMain.sectionChart}>
+          <div className={styleMain.sectionsCharts}>
+            <section className={styleMain.sectionChart}>
+              <AppBarChart></AppBarChart>
+            </section>
+            <section className={styleMain.sectionChart}>
+              <AppLineChart></AppLineChart>
+            </section>
+            {/* <section className={styleMain.sectionChart}>
             <CombinedChart></CombinedChart>
-          </section>
+          </section> */}
+          </div>
         </>
       ) : (
         <>
-          <section className={styleMain.section}>
-            <Changes type="Balance" data={data} />
-          </section>
-          <section className={styleMain.section}>
-            <Changes type="Income" data={data} />
-          </section>
-          <section className={styleMain.section}>
-            <Changes type="Expense" data={data} />
-          </section>
+          <div className={styleMain.sections}>
+            <section className={styleMain.section}>
+              <Changes type="Balance" data={data} />
+            </section>
+            <section className={styleMain.section}>
+              <Changes type="Income" data={data} />
+            </section>
+            <section className={styleMain.section}>
+              <Changes type="Expense" data={data} />
+            </section>
+          </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
