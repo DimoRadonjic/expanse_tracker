@@ -1,23 +1,19 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { useThemeContext } from "../../contexts/themeContext";
+import { ChartBarProps } from "./chartTypes";
 
-const data = [
-  { date: "2024-09-01", income: 1000, expense: 700 },
-  { date: "2024-09-02", income: 1200, expense: 800 },
-  { date: "2024-09-03", income: 900, expense: 500 },
-];
-
-const AppBarChart = () => {
+const AppBarChart = ({ dataChart }: ChartBarProps) => {
   const { themeMode } = useThemeContext();
 
-  const barColors = themeMode
-    ? { income: "#add8e6", expense: "#00008b" }
-    : { income: "#87CEFA", expense: "#1E90FF" };
+  const barColors =
+    themeMode !== "dark"
+      ? { income: "#add8e6", expense: "#1E90FF" }
+      : { income: "#87bbfa", expense: "#00008b" };
 
   return (
     <div className="chart">
       <ResponsiveBar
-        data={data}
+        data={dataChart}
         keys={["income", "expense"]}
         indexBy="date"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
@@ -25,7 +21,7 @@ const AppBarChart = () => {
         groupMode="stacked"
         colors={({ id }) => barColors[id as keyof typeof barColors]}
         axisBottom={{
-          tickRotation: 0,
+          tickRotation: 45,
           legend: "Date",
           legendPosition: "middle",
           legendOffset: 36,
@@ -59,7 +55,7 @@ const AppBarChart = () => {
         ]}
         theme={{
           labels: {
-            text: { fill: themeMode === "dark" ? "#ffffff" : "#ffffff" },
+            text: { fill: themeMode === "dark" ? "#ffffff" : "#000000" },
           },
           grid: {
             line: {
@@ -78,6 +74,9 @@ const AppBarChart = () => {
           },
           legends: {
             text: { fill: themeMode === "dark" ? "#ffffff" : "#000000" },
+          },
+          tooltip: {
+            basic: { color: themeMode === "dark" ? "#000000" : "inherit" },
           },
         }}
       />

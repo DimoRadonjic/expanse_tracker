@@ -86,12 +86,11 @@ const Login = () => {
             >
               Login
             </button>
-            <div
-              className={
-                styleApp.appButton + " " + styleLoginRegister.registerButton
-              }
-            >
+            <div className={styleLoginRegister.registerPart}>
               <button
+                className={
+                  styleApp.appButton + " " + styleLoginRegister.registerButton
+                }
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/register");

@@ -1,23 +1,15 @@
 import { ResponsiveLine } from "@nivo/line";
 import { useThemeContext } from "../../contexts/themeContext";
+import { ChartLineProps } from "./chartTypes";
+import { useBalanceContext } from "../../contexts/balanceContext";
 
-const data = [
-  {
-    id: "Balance",
-    data: [
-      { x: "2024-09-01", y: 300 },
-      { x: "2024-09-02", y: 400 },
-      { x: "2024-09-03", y: 350 },
-    ],
-  },
-];
-
-const AppLineChart = () => {
+const AppLineChart = ({ dataChart }: ChartLineProps) => {
   const { themeMode } = useThemeContext();
+
   return (
     <div className="chart">
       <ResponsiveLine
-        data={data}
+        data={dataChart}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: "point" }}
         yScale={{

@@ -5,10 +5,13 @@ import CombinedChart from "../charts/CombinedChart";
 import AppLineChart from "../charts/LineChart";
 import AppBarChart from "../charts/BarChart";
 import { useLocation } from "react-router-dom";
+import { useBalanceContext } from "../../contexts/balanceContext";
 
 const Main = () => {
   const [data, setData] = useState<[]>([]);
   const location = useLocation();
+  const { incomeLineData, expenseLineData, combinedBarData } =
+    useBalanceContext();
 
   console.log(location.pathname);
 
@@ -34,10 +37,10 @@ const Main = () => {
         <>
           <div className={styleMain.sectionsCharts}>
             <section className={styleMain.sectionChart}>
-              <AppBarChart></AppBarChart>
+              <AppBarChart dataChart={combinedBarData}></AppBarChart>
             </section>
             <section className={styleMain.sectionChart}>
-              <AppLineChart></AppLineChart>
+              <AppLineChart dataChart={incomeLineData}></AppLineChart>
             </section>
             {/* <section className={styleMain.sectionChart}>
             <CombinedChart></CombinedChart>

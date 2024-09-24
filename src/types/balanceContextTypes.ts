@@ -1,9 +1,17 @@
 import { DataType } from ".";
+import {
+  ChartBarDataArr,
+  ChartLineDataArr,
+  ChartLineType,
+} from "../components/charts/chartTypes";
 
 type BalanceContextType = {
   data: DataType[];
   balance: number;
   incomes: DataType[];
+  incomeLineData: ChartLineType;
+  expenseLineData: ChartLineType;
+  combinedBarData: ChartBarDataArr;
   expenses: DataType[];
   categories: string[];
   isLoading: boolean;

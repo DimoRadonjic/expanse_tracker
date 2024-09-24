@@ -6,13 +6,24 @@ import {
   useEffect,
 } from "react";
 import { BalanceContextAction, BalanceContextType } from "../types";
+import {
+  ChartBarData,
+  ChartBarDataArr,
+  ChartLineDataArr,
+  ChartLineType,
+} from "../components/charts/chartTypes";
 
 const initialState: BalanceContextType = {
   data: [],
   balance: 0,
   categories: [],
   incomes: [],
+  incomeLineData: [],
+
   expenses: [],
+  expenseLineData: [],
+
+  combinedBarData: [],
   isLoading: false,
   transactionMessage: "",
   dispatch: function (): void {},
@@ -26,8 +37,38 @@ function reducer(
     case "request":
       return { ...state, isLoading: true, error: undefined };
     case "success": {
-      const incomes = action.results.filter((item) => item.type === "income");
-      const expenses = action.results.filter((item) => item.type === "expense");
+      const results = action.results;
+      const incomes = results.filter((item) => item.type === "income");
+      const expenses = results.filter((item) => item.type === "expense");
+
+      const combinedBarData: ChartBarDataArr = Object.values(
+        results.reduce((acc, { date, type, amount }) => {
+          const entry = acc[date] || { date, value1: 0, value2: 0 };
+          type === "income"
+            ? (entry.income = amount)
+            : (entry.expense = amount);
+          acc[date] = entry;
+          return acc;
+        }, {} as Record<string, ChartBarData>)
+      );
+      const incomesLineData: ChartLineType = [
+        {
+          id: "income",
+          data: results
+            .filter((item) => item.type === "income")
+            .map(({ date, amount }) => ({ x: date, y: amount })),
+        },
+      ];
+
+      const expensesLineData: ChartLineType = [
+        {
+          id: "expense",
+          data: results
+            .filter((item) => item.type === "expense")
+            .map(({ date, amount }) => ({ x: date, y: amount })),
+        },
+      ];
+
       const balance =
         incomes.reduce((sum, item) => sum + item.amount, 0) -
         expenses.reduce((sum, item) => sum + item.amount, 0);
@@ -38,6 +79,9 @@ function reducer(
         incomes,
         expenses,
         balance,
+        combinedBarData,
+        expenseLineData: expensesLineData,
+        incomeLineData: incomesLineData,
       };
     }
     case "failure":
